@@ -12,13 +12,18 @@ const createAccountHandler = async (event) => {
   const newEmail = document.getElementById('email').value.trim()
   const newPassword = document.getElementById('password').value.trim()
 
-  if (newEmail, newUserName, newPassword){
+  if (newEmail && newUserName && newPassword){
     const response = await fetch('/api/users/signup',{
       method: 'POST',
       body: JSON.stringify({ newUserName, newEmail, newPassword }),
       headers: { 'Content-Type': 'application/json' }
     });
-    console.log("after fetch")
+    
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+    }
     console.log(response)
   }
 
