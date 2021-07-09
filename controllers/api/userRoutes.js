@@ -27,7 +27,8 @@ router.post('/login', async (req, res) => {
             return;
         }
         console.log(userData)
-        re
+    }catch(err){
+        res.status(500).json(err)
     }
 
 })
