@@ -1,5 +1,8 @@
 // const newUserName = document.getElementById('newUserName').value.trim()
 // const newEmail = document.getElementById('newEmail').value.trim()
+
+// const { response } = require("express")
+
 // const newPassword = document.getElementById('newPassword').value.trim()
 const submitBtn = document.getElementById('submitBtn')
 
@@ -12,8 +15,8 @@ const createAccountHandler = async (event) => {
   const newEmail = document.getElementById('email').value.trim()
   const newPassword = document.getElementById('password').value.trim()
 
-  if (newEmail, newUserName, newPassword){
-    const response = await fetch('/api/users/signup',{
+  if (newEmail, newUserName, newPassword) {
+    const response = await fetch('/api/users/signup', {
       method: 'POST',
       body: JSON.stringify({ newUserName, newEmail, newPassword }),
       headers: { 'Content-Type': 'application/json' }
@@ -21,13 +24,18 @@ const createAccountHandler = async (event) => {
     console.log("after fetch")
     console.log(response)
   }
+  // if (response.ok) {
+  //   document.location.replace('/Dashboard');
+  // } else {
+  //   alert(response.statusText)
+  // }
 
 }
 
 // const loginHandler = async (event)=>{
 //   event.preventDefault()
 //   console.log("login func")
-  
+
 //   const email = document.getElementById('email').value.trim()
 //   const password = document.getElementById('password').value.trim()
 //   if(email && password){
