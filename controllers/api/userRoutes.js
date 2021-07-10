@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const e = require('express')
 const session = require('express-session')
 const { User } = require('../../models')
 
@@ -54,6 +55,22 @@ router.post('/logout', (req, res)=>{
         res.status(204).end()
     }
     res.status(404).end()
+})
+
+router.post('/switch', (req, res)=>{
+    console.log("route hit")
+    if(req.session.switch){
+        console.log("if")
+        req.session.switch = false;
+        res.render('login-signup', {switch: req.session.switch})
+    }
+    else if(!req.session.switch){
+        console.log("else")
+        req.session.switch = true;
+        res.render('login-signup', {switch: req.session.switch})
+    }
+    res.status(204)
+
 })
 
 

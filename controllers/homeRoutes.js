@@ -2,11 +2,11 @@ const router = require('express').Router()
 const { User } = require('../models')
 
 router.get('/', (req, res)=>{
-    console.log(req.session)
     if(req.session.logged_in){
         res.render('dashboard')
     } else {
-        res.render('login-signup')
+        console.log("hit")
+        res.render('login-signup', {switch: req.session.switch})
     }
 })
 

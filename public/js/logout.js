@@ -1,6 +1,6 @@
 const logOutBtn = document.getElementById('logOutBtn')
 
-const logout = async (evnet) => {
+const logout = async (event) => {
     event.preventDefault()
     console.log("logout hit")
     const response = await fetch('/api/users/logout', {
