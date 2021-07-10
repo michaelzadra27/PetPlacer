@@ -1,9 +1,42 @@
 <!-- Let's see how to get this to display -->
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+{{!-- <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">
+    <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo"></a>
+    <div class="header-text">
+      <h2>Pet Placer</h2>
+    </div>
+    <button id="linkAcctBtn" type="button" class="btn btn-warning">Link Account</button>
+    <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
+</nav> --}}
+
+<header>
+	<img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo"><h2>Pet Placer</h2></a>
+	<nav><button id="linkAcctBtn" type="button" class="btn btn-warning">Link Account</button><button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button></nav>
+</header>
+
+
+<section class="container mt-4">
+  <div class="row">
+    <div class="col-12 col-md-9 col-lg-9">
+      <div class="primary-card" style="width: 80%;">
+        <img class="card-img-top" src='images/bulldog.jpg' alt="DOG IMAGES GO HERE">
+        <div class="card-body">
+          <h5 class="card-title" id="pup">Potential Pupper</h5>
+          <div class="btn-group">
+            <a href="#" id="btnNo" class="btn btn-danger">NO</a><a href="#" id="btnYes" class="btn btn-primary">YES</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 col-lg-3">
+      <div class="card">
+        <h3 class="card-header">Previous Matches</h3>
+        <div class="card-body">
+          <p class="card-text">This is where we need the previous results to populate</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+</section>
+

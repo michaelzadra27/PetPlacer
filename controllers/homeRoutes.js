@@ -3,11 +3,12 @@ const { User } = require('../models')
 
 router.get('/', (req, res)=>{
     console.log(req.session)
-    if(req.session.logged_in){
-        res.render('dashboard')
-    } else {
-        res.render('login-signup')
-    }
+    // if(req.session.logged_in){
+    //     res.render('dashboard')
+    // } else {
+    //     res.render('login-signup')
+    // }
+    res.render('dashboard')
 })
 
 // router.get('/dashboard', (req, res)=>{
