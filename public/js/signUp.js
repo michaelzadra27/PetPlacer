@@ -2,7 +2,6 @@ console.log("in signUp")
 
 const createAccountHandler = async (event) => {
     event.preventDefault()
-    console.log("in fetch")
     const newUserName = document.getElementById('userName').value.trim()
     const newEmail = document.getElementById('email').value.trim()
     const newPassword = document.getElementById('password').value.trim()

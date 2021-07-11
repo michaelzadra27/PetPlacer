@@ -9,7 +9,6 @@ const logout = async (event) => {
     });
 
     if (response.ok) {
-      console.log("===============hit")
       document.location.replace('/');
     } else {
       alert(response.statusText);
