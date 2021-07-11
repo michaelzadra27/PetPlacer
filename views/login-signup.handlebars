@@ -3,7 +3,13 @@
     <img src= 'images/petplacer.png' alt = "this is pet placer">
   </div>
   <div class="col-md-6">
+    {{#if switch}}
     {{> signup-form }}
+    <form><button id="switch" class="btn btn-primary" type="submit">Log in</button></form>
+    {{else}}
+    {{> login-form }}
+    <form><button id="switch" class="btn btn-primary" type="submit">Create Accout</button></form>
+    {{/if}}
   </div>
 </div>
-
+<script src="./js/login-signup.js"></script>

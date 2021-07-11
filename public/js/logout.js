@@ -1,6 +1,6 @@
 const logOutBtn = document.getElementById('logOutBtn')
 
-const logout = async (evnet) => {
+const logout = async (event) => {
     event.preventDefault()
     console.log("logout hit")
     const response = await fetch('/api/users/logout', {
@@ -9,7 +9,6 @@ const logout = async (evnet) => {
     });
 
     if (response.ok) {
-      console.log("===============hit")
       document.location.replace('/');
     } else {
       alert(response.statusText);

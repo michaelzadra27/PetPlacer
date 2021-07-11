@@ -32,6 +32,19 @@ User.init(
             type: DataTypes.STRING,
             allowNull: true,
        },
+       
+       linked_account: {
+         type: DataTypes.STRING,
+         allowNull: true,
+         references: {
+          model: 'user',
+          key: 'email',
+          unique: false
+        },
+         validate: {
+          isEmail: true,
+        },
+       }
    },
   {
     sequelize,
