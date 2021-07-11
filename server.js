@@ -4,8 +4,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
+// const passport = require('passport');
+// const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt')
 
 const sequelize = require('./config/connection');
@@ -40,8 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 //Passport.js
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 sequelize.sync({ force: false }).then(() => {
