@@ -54,14 +54,10 @@ const makeList = (user)=>{
     li.appendChild(Btn)
 }
 
-const getMatches = (event)=>{
-    event.preventDefault()
-    const matches = await fetch('/api/users/matches', {
-        method: 'GET',
-        body: 'trhines94@gmail.com',
-        headers: { 'Content-Type': 'application/json' }
-    })
-    console.log(matches)
+const getMatches = async (event)=>{
+    //event.preventDefault()
+    const matches = await fetch('/api/users/matches/trhines94@gmail.com')
+    if(matches){console.log(matches.json())}
 }
 
 getMatches()

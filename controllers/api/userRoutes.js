@@ -111,7 +111,7 @@ router.put('/link_account', async (req, res)=>{
 })
 
 //user email for testing. change to session object for live
-router.get('/dogID/:user_email', async(req, res)=>{
+router.get('/matches/:user_email', async(req, res)=>{
     try{
         const likes_link = await User.findByPk(req.params.user_email, {
             attributes: [ 'liked_dogs', 'linked_account' ]
