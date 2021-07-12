@@ -28,12 +28,9 @@ header::after {
 }
 
 body {
+  width: 100%;
   background: rgb(131,58,180);
   background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
-}
-
-body::after {
-  width: 100%;
 }
 
 #linkAcctBtn {
@@ -71,13 +68,15 @@ ul {
 }
 
 #btnNo {
-  /* display: flex; */
-  /* align-items: flex-start; */
+  border-radius: 25px;
+  margin-right: 20px;
+  font-size: 50px;
+  transform: rotate(180deg);
 }
 
-.btnYes {
-  /* display: flex; */
-  /* align-items: flex-end; */
+#btnYes {
+  border-radius: 25px;
+  margin-left: 20px;
+  font-size: 50px;
 }
-
 
