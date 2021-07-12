@@ -17,7 +17,7 @@ const loginHandler = async (event)=>{
       document.location.replace('/');
     }
   }
-
+console.log(password)
 }
 
 submitBtn.addEventListener('click', loginHandler)

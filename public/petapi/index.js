@@ -1,12 +1,42 @@
-accessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzbThud3JWTXhyc01KNG42WHZvb3lWZHhqcVZScUtNTGlpSXJSMDM2TTN5bnlwdFNiUiIsImp0aSI6ImE0NTNlZDM1ZjQzMzNjY2UxYWQ3ZGNlYjQ5MjNhOWIwMGE1MjhiNDc0MTQwYzU4MzMxODdkZjExNTAzM2E0N2ZmMDE0Zjc0YzAwNThiMzBiIiwiaWF0IjoxNjI2MDQwNzY1LCJuYmYiOjE2MjYwNDA3NjUsImV4cCI6MTYyNjA0NDM2NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.iTFLbCE5W2mbywjbMI5K9Bi50Pe1hoGCVLZzdo2b2vhCDHgII2-pT_gLjYxe1BA4jf-DnNARr4VXOO8UR8hriZizU9s2qmPCwvldQ_ml6dlsSBHEmGaDao25hVTNUIFTFUQOMsa6KAYNC5pB0C3QmoTyIArJGozuUA8A9BVyjBM0MPDbFojVsJG8bCxArNUsRf2BoGXsZfKK7VYyDKWXgGOgGe2_ZowL2KqYNl3npTvnkMnPIyESs6Rb8ZNmxxOvxF6LhZWnItrlbGbePszcoOlw6yf5_GAwprUJflNHBGuDTqKuKTn9S3SzUhqZQw_-YIjHLuSKyxGlJG_CNvxCVw'
+const key = "3m8nwrVMxrsMJ4n6XvooyVdxjqVRqKMLiiIrR036M3ynyptSbR"
+const secret = "vT3chXJ3ddzDrpStykKDftVGJ55X1nCGDXPOJJNN"
+//console.log("before token")
+
+function getData() {
+
+const getToken = async () => {
+    console.log("token function")
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials");
+    params.append("client_id", key);
+    params.append("client_secret", secret);
+    const petRes = await fetch(
+      "https://api.petfinder.com/v2/oauth2/token",
+      {
+        method: "POST",
+        body: params,
+      }
+    );
+    const data = await petRes.json();
+     //console.log(petRes)
+     
+    //res.send(data);
+    console.log("+++++++")
+    console.log(data)
+    console.log("DDDDDDDDD")
+    console.log(data.access_token)
+    apiCall(data.access_token)
+   };
+
+getToken();
 
 
-function apiCall()  { 
+function apiCall(access_token)  { 
         fetch(
           "https://api.petfinder.com/v2/animals?type=dog&page=2",
           {
             headers: {
-              Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${access_token}`,
             },
           }
         )
@@ -19,7 +49,10 @@ function apiCall()  {
             console.log(data1)
         })
       };
+
+    }
     
-apiCall();
+    getData();
+// apiCall();
  
 console.log("I'm ready")
