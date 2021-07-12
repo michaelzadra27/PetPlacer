@@ -116,9 +116,9 @@ router.put('/link_account', async (req, res)=>{
 })
 
 //user email for testing. change to session object for live
-router.get('/matches/:user_email', async(req, res)=>{
+router.get('/matches', async(req, res)=>{
     try{
-        const likes_link = await User.findByPk(req.params.user_email, {
+        const likes_link = await User.findByPk(req.session.user_email, {
             attributes: [ 'liked_dogs', 'linked_account' ]
         })
         
@@ -149,11 +149,9 @@ router.get('/matches/:user_email', async(req, res)=>{
 
 //replace body with session for live
 router.put('/addLike', async (req, res)=>{
-    console.log("hit")
-    console.log(req.body.user_email)
-    console.log(typeof req.body.like)
+    console.log(req.session.user_email)
     try{
-        const currentData = await User.findByPk(req.body.user_email, {
+        const currentData = await User.findByPk(req.session.user_email, {
             attributes: [ 'email', 'liked_dogs' ]
         })
 
