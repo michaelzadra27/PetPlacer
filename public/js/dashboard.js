@@ -1,7 +1,5 @@
 console.log("Dashboard")
 
-
-
 const searchBtn = document.getElementById('searchBtn')
 
 const searchUser = async (event)=> {
@@ -49,11 +47,13 @@ const makeList = (user)=>{
     Btn.setAttribute('ID', 'link')
     Btn.addEventListener('click', addAccountLink)
 
+
     foundList.appendChild(li)
     li.appendChild(p)
     p.textContent = user.email
     li.appendChild(Btn)
 }
+
 
 
 
