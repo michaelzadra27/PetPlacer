@@ -5,7 +5,7 @@ const linkBtn = document.getElementById('linkAcctBtn')
 const searchBtn = document.getElementById('searchBtn')
 
 const searchUser = async (event)=> {
-    console.log("hit")
+
     event.preventDefault()
     const userEmail = document.getElementById('userEmail').value.trim()
     fetch(`/api/users/search/${userEmail}`)
@@ -34,11 +34,13 @@ const makeList = (user)=>{
     const Btn = document.createElement('BUTTON')
     Btn.setAttribute('ID', 'link')
 
+
     foundList.appendChild(li)
     li.appendChild(p)
     p.textContent = user.email
     p.appendChild(Btn)
 }
+
 
 
 
