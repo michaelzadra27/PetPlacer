@@ -5,12 +5,20 @@ header {
   padding: 1em 10%;
 }
 
+.tiptop{
+  display: inline-flex;
+  left: 10%;
+  line-height: 50px;
+}
+
 header h2,
 header nav {
   display: inline-block;
+  align-content: center;
 }
 img {
   max-height: 400px;
+  margin-right: 13px;
 }
 
 header::after {
@@ -19,15 +27,14 @@ header::after {
   width: 100%;
 }
 
-/* .navbar-brand {
-  display: flex;
-  margin-left: 1em;
+body {
+  background: rgb(131,58,180);
+  background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
 
-#logOutBtn {
-  align-content: center;
-  margin-right: 1em;
-} */
+body::after {
+  width: 100%;
+}
 
 #linkAcctBtn {
   align-content: center;
@@ -44,6 +51,25 @@ h5 {
   display: flex;
 }
 
+#link {
+  background-color: #0d6efd;
+  height: 1.6em;
+  width: 3em;
+  border-radius: 4px;
+  border-width: 0px;
+  margin-left: 7px;
+  color: white;
+}
+
+.modal-body{
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
 #btnNo {
   /* display: flex; */
   /* align-items: flex-start; */
@@ -54,11 +80,4 @@ h5 {
   /* align-items: flex-end; */
 }
 
-/* .header-text {
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  padding-left: 20px;
-  justify-content: left;
-} */
 

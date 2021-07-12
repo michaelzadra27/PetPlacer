@@ -3,6 +3,7 @@ console.log("Dashboard")
 const searchBtn = document.getElementById('searchBtn')
 
 const searchUser = async (event)=> {
+
     event.preventDefault()
     const userEmail = document.getElementById('userEmail').value.trim()
     fetch(`/api/users/search/${userEmail}`)
@@ -45,7 +46,12 @@ const makeList = (user)=>{
     p.setAttribute('CLASS', 'linkEmail')
     const Btn = document.createElement('BUTTON')
     Btn.setAttribute('ID', 'link')
+
     Btn.addEventListener('click', addAccountLink)
+  
+    Btn.textContent = "Link"
+
+
 
 
     foundList.appendChild(li)
@@ -61,6 +67,7 @@ const getMatches = async (event)=>{
 }
 
 getMatches()
+
 
 
 searchBtn.addEventListener('click', searchUser)

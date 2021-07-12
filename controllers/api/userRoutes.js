@@ -20,9 +20,13 @@ router.post('/signup', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
+    console.log("in try")
+    console.log(req.body.email)
+    console.log(req.body.password)
     try{
-        const userData = await User.findOne({ where: {email: req.body.email} })
         
+        const userData = await User.findOne({ where: {email: req.body.email} })
+        console.log(userData)
         if (!userData) {
             res
               .status(400)
@@ -45,6 +49,7 @@ router.post('/login', async (req, res) => {
 
     } catch(err){
         res.status(500).json(err)
+        console.log("in catch")
     }
 
 })
