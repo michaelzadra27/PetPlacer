@@ -4,7 +4,7 @@ const secret = "vT3chXJ3ddzDrpStykKDftVGJ55X1nCGDXPOJJNN"
 
 function getData() {
 
-const getToken = async () => {
+  const getToken = async () => {
     console.log("token function")
     const params = new URLSearchParams();
     params.append("grant_type", "client_credentials");
@@ -18,41 +18,56 @@ const getToken = async () => {
       }
     );
     const data = await petRes.json();
-     //console.log(petRes)
-     
+    //console.log(petRes)
+
     //res.send(data);
     console.log("+++++++")
     console.log(data)
     console.log("DDDDDDDDD")
     console.log(data.access_token)
     apiCall(data.access_token)
-   };
+  };
 
-getToken();
+  getToken();
 
 
-function apiCall(access_token)  { 
-        fetch(
-          "https://api.petfinder.com/v2/animals?type=dog&page=2",
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
-          }
-        )
-        .then(function (response) {
-            return response.json();
-            
+  function apiCall(access_token) {
+    fetch(
+      "https://api.petfinder.com/v2/animals?type=dog&page=2&size=small&status=adoptable&breed=beagle&gender=female&age=baby",
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
+    )
+      .then(function (response) {
+        console.log(response)
+        return response.json();
 
-        })
-        .then(function (data1) {
-            console.log(data1)
-        })
-      };
 
-    }
-    
-    getData();
+      })
+      .then(function (data1) {
+        console.log(data1)
+        renderCards(data1);
+        
+      })
+  };
+
+  //return data1
+}
+
+getData();
 // apiCall();
- 
-console.log("I'm ready")
+
+//console.log(getData)
+//module.exports = { getData };
+
+function renderCards(data1) {
+  
+  
+  dogID = data1.animals[0].id
+  console.log(dogID)
+
+
+}
+
