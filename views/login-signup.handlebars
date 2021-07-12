@@ -1,14 +1,14 @@
-<div class="row">
-  <div class="col-md-6">
-    <img src= 'images/petplacer.png' alt = "this is pet placer">
+<div class="row mt-5">
+  <div class="col-md-6 col-sm-9 mx-5 px-5">
+    <img src= 'images/petplacer2.png' alt = "this is pet placer">
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3 px-5">
     {{#if switch}}
     {{> signup-form }}
-    <form><button id="switch" class="btn btn-primary" type="submit">Log in</button></form>
+    <form><button id="switch" class="btn btn-primary" type="submit">Log In</button></form>
     {{else}}
     {{> login-form }}
-    <form><button id="switch" class="btn btn-primary" type="submit">Create Accout</button></form>
+    <form><button id="switch" class="btn btn-primary" type="submit">Create Account</button></form>
     {{/if}}
   </div>
 </div>
