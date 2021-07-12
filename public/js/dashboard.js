@@ -32,6 +32,7 @@ const makeList = (user)=>{
     const li = document.createElement('LI')
     const p = document.createElement("P")
     const Btn = document.createElement('BUTTON')
+    Btn.setAttribute('ID', 'link')
 
     foundList.appendChild(li)
     li.appendChild(p)
