@@ -2,6 +2,7 @@ const router = require('express').Router()
 const e = require('express')
 const session = require('express-session')
 const { User } = require('../../models')
+const Match = require('../../utils/findMatches.js')
 
 router.post('/signup', async (req, res) => {
     try{
@@ -109,7 +110,59 @@ router.put('/link_account', async (req, res)=>{
 
 })
 
+//user email for testing. change to session object for live
+router.get('/dogID/:user_email', async(req, res)=>{
+    try{
+        const likes_link = await User.findByPk(req.params.user_email, {
+            attributes: [ 'liked_dogs', 'linked_account' ]
+        })
+        
+        const userLikes = likes_link.liked_dogs
+        const linkedAccount = likes_link.linked_account
 
+        //array of id's
+        //console.log(userLikes)
+
+        //email of linked account
+        //console.log(linkedAccount)
+
+        const linkedUserData = await User.findByPk(linkedAccount, {
+            attributes: [ 'liked_dogs' ]
+        })
+        const likeData = linkedUserData.liked_dogs
+
+        const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+        res.status(200).json(matches)
+
+
+
+    } catch(err){
+        res.status(500).json(err)
+    }
+
+})
+
+//replace body with session for live
+router.put('/addLike', async (req, res)=>{
+    console.log("hit")
+    console.log(req.body.user_email)
+    console.log(typeof req.body.like)
+    try{
+        const currentData = await User.findByPk(req.body.user_email, {
+            attributes: [ 'email', 'liked_dogs' ]
+        })
+
+        const parsedData = JSON.parse(currentData.dataValues.liked_dogs)
+        const newLikes = [ ...parsedData, JSON.parse(req.body.like)]
+
+        const likeAdded = await currentData.update({liked_dogs: JSON.stringify(newLikes)})
+        if(likeAdded){
+            res.status(200).json(newLikes)
+        }
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router;
 
