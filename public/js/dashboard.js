@@ -33,6 +33,7 @@ const makeList = (user)=>{
     const p = document.createElement("P")
     const Btn = document.createElement('BUTTON')
     Btn.setAttribute('ID', 'link')
+    Btn.textContent = "Link"
 
 
     foundList.appendChild(li)
