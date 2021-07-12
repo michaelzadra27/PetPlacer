@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
               .json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-        
+
         //replace with encryption later
         if(!req.body.password === userData.password){
             res.status(400).json({ message: "incorrect email or password"})
@@ -37,6 +37,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            req.session.user_email = req.body.email
 
         res.json({user: userData, message: 'Log in successful'})
         });
@@ -69,16 +70,14 @@ router.post('/switch', (req, res)=>{
 })
 
 router.get('/search/:email', async (req, res)=>{
-    console.log('hit+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+
     const email = req.params.email
-    console.log(email)
     try{
         const userData = await User.findByPk(email)
         if(!userData){
             res.status(404).json({ message: 'No user found with that email'})
         }
         const data = JSON.stringify(userData.dataValues)
-        console.log(userData)
         return res.json(userData.dataValues)
     } catch(err){
         res.status(500).json(err)
@@ -86,26 +85,22 @@ router.get('/search/:email', async (req, res)=>{
 })
 
 router.put('/link_account', async (req, res)=>{
-    try {
-        const userData = await User.findByPk(req.body.email)
 
+    try {
+        const userData = await User.findByPk(req.session.user_email)
         if(!userData){
             res.status(404).message({ message: 'No user with that email' })
             return
         }
-        
-        console.log(userData)
 
-        const secondUserData = await User.findByPk(req.body.linked_account)
+        const secondUserData = await User.findByPk(req.body.email)
 
         if(!secondUserData){
             res.status(404).message({ message: 'Link failed, email not found' })
             return
         }
-
-        console.log(secondUserData)
         
-        const updatedData = await userData.update({linked_account: req.body.linked_account})
+        const updatedData = await userData.update({linked_account: req.body.email})
         res.status(200).json(updatedData)
 
     } catch(err){

@@ -1,11 +1,10 @@
 console.log("Dashboard")
 
 
-const linkBtn = document.getElementById('linkAcctBtn')
+
 const searchBtn = document.getElementById('searchBtn')
 
 const searchUser = async (event)=> {
-    console.log("hit")
     event.preventDefault()
     const userEmail = document.getElementById('userEmail').value.trim()
     fetch(`/api/users/search/${userEmail}`)
@@ -27,22 +26,40 @@ const searchUser = async (event)=> {
     });
 }
 
+const addAccountLink = async (event) =>{
+    const email = document.querySelector('.linkEmail').innerHTML
+    console.log(email)
+    console.log("hit")
+    event.preventDefault()
+    const addLink = await fetch('/api/users/link_account', {
+        method: 'PUT',
+        body: JSON.stringify({email}),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    if(addLink){location.reload()}
+    
+}
+
 const makeList = (user)=>{
     const foundList = document.getElementById('foundUsers')
     const li = document.createElement('LI')
     const p = document.createElement("P")
+    p.setAttribute('CLASS', 'linkEmail')
     const Btn = document.createElement('BUTTON')
     Btn.setAttribute('ID', 'link')
+    Btn.addEventListener('click', addAccountLink)
 
     foundList.appendChild(li)
     li.appendChild(p)
     p.textContent = user.email
-    p.appendChild(Btn)
+    li.appendChild(Btn)
 }
 
 
 
 searchBtn.addEventListener('click', searchUser)
+
+
 
 
 // const searchUser = async (event)=> {
