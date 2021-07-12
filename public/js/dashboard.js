@@ -5,19 +5,38 @@ const linkBtn = document.getElementById('linkAcctBtn')
 const searchBtn = document.getElementById('searchBtn')
 
 const searchUser = async (event)=> {
+    console.log("hit")
     event.preventDefault()
-    fetch(`https://ow-api.com/v1/stats/pc/us/${user}/complete`)
+    const userEmail = document.getElementById('userEmail').value.trim()
+    fetch(`/api/users/search/${userEmail}`)
     .then(function (response) {
       if (response.status !== 200) {
-        alert("error." + response.status);
-        location.reload()
-      } else {
+          if(response.status === 404){
+              alert("No user found with that email")
+          } else {
+            alert("error." + response.status);
+          }
       }
       return response.json();
     })
     .then(function (data) {
-        console.log(data)
+        if(!data.email){
+            return
+        }
+            makeList(data)
     });
+}
+
+const makeList = (user)=>{
+    const foundList = document.getElementById('foundUsers')
+    const li = document.createElement('LI')
+    const p = document.createElement("P")
+    const Btn = document.createElement('BUTTON')
+
+    foundList.appendChild(li)
+    li.appendChild(p)
+    p.textContent = user.email
+    p.appendChild(Btn)
 }
 
 

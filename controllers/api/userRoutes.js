@@ -69,7 +69,9 @@ router.post('/switch', (req, res)=>{
 })
 
 router.get('/search/:email', async (req, res)=>{
+    console.log('hit+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
     const email = req.params.email
+    console.log(email)
     try{
         const userData = await User.findByPk(email)
         if(!userData){
