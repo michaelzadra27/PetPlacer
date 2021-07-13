@@ -1,5 +1,8 @@
 var animalCard = document.getElementById('animal')
 var pup = document.getElementById('pup')
+var cardHeaderEl = document.getElementById("cardHeader")
+var cardBodyEl = document.getElementById("tester")
+
 
 const key = "3m8nwrVMxrsMJ4n6XvooyVdxjqVRqKMLiiIrR036M3ynyptSbR"
 const secret = "vT3chXJ3ddzDrpStykKDftVGJ55X1nCGDXPOJJNN"
@@ -21,9 +24,7 @@ function getData() {
       }
     );
     const data = await petRes.json();
-    //console.log(petRes)
-
-    //res.send(data);
+   
     console.log("+++++++")
     console.log(data)
     console.log("DDDDDDDDD")
@@ -36,7 +37,7 @@ function getData() {
 
   function apiCall(access_token) {
     fetch(
-      "https://api.petfinder.com/v2/animals?type=dog&page=2&size=small&status=adoptable&breed=beagle&gender=female&age=baby",
+      "https://api.petfinder.com/v2/animals?type=dog&page=2&size=small&status=adoptable&breed=beagle&gender=male&age=baby",
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -52,19 +53,17 @@ function getData() {
       .then(function (data1) {
         console.log(data1)
         renderCards(data1);
+        
 
       })
   };
 
-  //return data1
+ 
 }
 
 getData();
-// apiCall();
 
-//console.log(getData)
-//module.exports = { getData };
-
+//Rendering API data to DOM
 function renderCards(data1) {
 
   var i = Math.floor(Math.random() * data1.animals.length)
@@ -79,7 +78,17 @@ function renderCards(data1) {
 
   animalCard.src = photo
   pup.innerHTML = dogName
-
-
+  Matches();
 }
 
+//Calling API when like or dislike is clicked
+document.getElementById('btnYes').addEventListener("click", getData)
+document.getElementById('btnNo').addEventListener("click", getData)
+
+
+function Matches(){
+  //cardBodyEl.innerHTML = dogName
+  cardBodyEl.src = photo
+  console.log(cardBodyEl)
+
+}
