@@ -3,7 +3,7 @@ const { User } = require('../models')
 
 router.get('/', (req, res)=>{
     if(req.session.logged_in){
-        res.render('dashboard')
+        res.render('Dashboard')
     } else {
         res.render('login-signup', {switch: req.session.switch})
     }

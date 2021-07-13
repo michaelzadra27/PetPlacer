@@ -10,17 +10,10 @@
 </nav> --}}
 
 <header>
-  <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo">
-  <h2>Pet Placer</h2></a>
-  <nav><button id="linkAcctBtn" type="button" class="btn btn-warning">Link Account</button><button id="logOutBtn"
-      class="btn btn-primary" type="submit">Log Out</button></nav>
-
-  <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo">
-  <h2>Pet Placer</h2></a>
-  <nav>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Link
-      Account</button>
-    <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
+	<img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo"><h2 class="tiptop">Pet Placer</h2></a>
+	<nav>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Link Account</button>
+      <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
   </nav>
 
 </header>
@@ -29,12 +22,12 @@
 <section class="container mt-4">
   <div class="row">
     <div class="col-12 col-md-9 col-lg-9">
-      <div class="primary-card" style="width: 80%;">
+      <div class="primary-card mx-auto" style="width: 90%;">
         <img class="card-img-top" src='images/bulldog.jpg' alt="DOG IMAGES GO HERE">
         <div class="card-body">
           <h5 class="card-title" id="pup">Potential Pupper</h5>
           <div class="btn-group">
-            <a href="#" id="btnNo" class="btn btn-danger">NO</a><a href="#" id="btnYes" class="btn btn-primary">YES</a>
+            <a href="#" id="btnNo" class="btn btn-danger"><i class="fa fa-paw"></i></a><a href="#" id="btnYes" class="btn btn-primary"><i class="fa fa-paw"></i></a>
           </div>
         </div>
       </div>
@@ -58,7 +51,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Find an Account</h4>
       </div>
       <div class="modal-body">
         <form>
@@ -67,12 +60,15 @@
             <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
               placeholder="Enter email">
           </div>
-          <button type="button" class="btn btn-primary" id="searchBtn">Search</button>
+          <button type="button" class="btn btn-primary mt-2" id="searchBtn">Search</button>
         </form>
       </div>
+      <div class="modal-body">
+        <ul id="foundUsers">
+        </ul>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal"
-          data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-dismiss="modal">Close</button>
       </div>
     </div>
 
