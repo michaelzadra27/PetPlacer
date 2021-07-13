@@ -67,6 +67,12 @@ ul {
   list-style-type: none;
 }
 
+li {
+  display: flex;
+  flex-direction: row;
+}
+
+
 #btnNo {
   border-radius: 25px;
   margin-right: 20px;
@@ -81,4 +87,3 @@ ul {
   font-size: 50px;
   box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
-
