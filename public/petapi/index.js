@@ -1,3 +1,6 @@
+var animalCard = document.getElementById('animal')
+var pup = document.getElementById('pup')
+
 const key = "3m8nwrVMxrsMJ4n6XvooyVdxjqVRqKMLiiIrR036M3ynyptSbR"
 const secret = "vT3chXJ3ddzDrpStykKDftVGJ55X1nCGDXPOJJNN"
 //console.log("before token")
@@ -49,7 +52,7 @@ function getData() {
       .then(function (data1) {
         console.log(data1)
         renderCards(data1);
-        
+
       })
   };
 
@@ -70,9 +73,13 @@ function renderCards(data1) {
   console.log(dogID)
   photo = data1.animals[i].photos[0].large
   console.log(photo)
-  dogName= data1.animals[i].name
+  dogName = data1.animals[i].name
   console.log(dogName)
-console.log (data1.animals.length)
+  console.log(data1.animals.length)
+
+  animalCard.src = photo
+  pup.innerHTML = dogName
+
 
 }
 

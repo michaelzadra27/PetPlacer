@@ -2,19 +2,21 @@
 {{!-- <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand">
     <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo"></a>
-    <div class="header-text">
-      <h2>Pet Placer</h2>
-    </div>
-    <button id="linkAcctBtn" type="button" class="btn btn-warning">Link Account</button>
-    <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
+  <div class="header-text">
+    <h2>Pet Placer</h2>
+  </div>
+  <button id="linkAcctBtn" type="button" class="btn btn-warning">Link Account</button>
+  <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
 </nav> --}}
 
 <header>
-	<img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo"><h2 class="tiptop">Pet Placer</h2></a>
-	<nav>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Link Account</button>
-      <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
+  <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo">
+  <h2 class="tiptop">Pet Placer</h2></a>
+  <nav>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Link Account</button>
+    <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
   </nav>
+
 </header>
 
 
@@ -22,11 +24,12 @@
   <div class="row">
     <div class="col-12 col-md-9 col-lg-9">
       <div class="primary-card mx-auto" style="width: 90%;">
-        <img class="card-img-top" src='images/bulldog.jpg' alt="DOG IMAGES GO HERE">
+        <img class="card-img-top" id="animal" src='images/bulldog.jpg' alt="DOG IMAGES GO HERE">
         <div class="card-body">
           <h5 class="card-title" id="pup">Potential Pupper</h5>
           <div class="btn-group">
-            <a href="#" id="btnNo" class="btn btn-danger"><i class="fa fa-paw"></i></a><a href="#" id="btnYes" class="btn btn-primary"><i class="fa fa-paw"></i></a>
+            <a href="#" id="btnNo" class="btn btn-danger"><i class="fa fa-paw"></i></a><a href="#" id="btnYes"
+              class="btn btn-primary"><i class="fa fa-paw"></i></a>
           </div>
         </div>
       </div>
@@ -56,7 +59,8 @@
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+              placeholder="Enter email">
           </div>
           <button type="button" class="btn btn-primary mt-2" id="searchBtn">Search</button>
         </form>
@@ -66,7 +70,8 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
+          data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -74,5 +79,3 @@
 </div>
 <script src="./js/dashboard.js"></script>
 <script src="./petapi/index.js"></script>
-
-
