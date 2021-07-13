@@ -10,8 +10,8 @@
 </nav> --}}
 
 <header>
-  <img src="images/petplacer2.png" width="60" height="60" alt="Pet Placer Logo">
-  <h2 class="tiptop">Pet Placer</h2></a>
+  <img src="images/petplacer2.png" width="60" height="60" class="siteLogo" alt="Pet Placer Logo"><h2 class="siteName"> Pet Placer</h2>
+  
   <nav>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Link Account</button>
     <button id="logOutBtn" class="btn btn-primary" type="submit">Log Out</button>
@@ -36,9 +36,14 @@
     </div>
     <div class="col-12 col-md-3 col-lg-3">
       <div class="card">
-        <h3 class="card-header">Previous Matches</h3>
+        <h3 class="card-header" id= "cardHeader">Previous Matches</h3>
         <div class="card-body">
-          <p class="card-text">This is where we need the previous results to populate</p>
+          <ul class="matchList">
+            <li>
+            </li>
+          </ul>
+          {{!-- <img class="card-img-top" id="tester" src='images/bulldog.jpg' alt="DOG IMAGES GO HERE">
+          <p class="card-text">This is where we need the previous results to populate</p> --}}
         </div>
       </div>
     </div>
@@ -46,6 +51,7 @@
 
 </section>
 
+{{!-- link account modal --}}
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -77,5 +83,38 @@
 
   </div>
 </div>
+
+
+{{!-- view match modal --}}
+<div id="matchModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Find an Account</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-body">
+        <ul id="foundUsers">
+          <p id="dogModalInfo">test text</p>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal"
+          data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <script src="./js/dashboard.js"></script>
 <script src="./petapi/index.js"></script>

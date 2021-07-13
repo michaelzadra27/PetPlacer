@@ -69,8 +69,43 @@ const getMatches = async (event)=>{
     //event.preventDefault()
     const matches = await fetch('/api/users/matches')
     const array = await matches.json()
-    console.log(array)
-    console.log('match')
+    array.forEach(dog=>{
+        let ul = document.querySelector(".matchList")
+        console.log(dog)
+        console.log(dog.img)
+        const newLi = document.createElement("LI")
+
+
+        const img = document.createElement("IMG")
+        img.src = dog.img
+        img.setAttribute("class", "card-img-top matchImg")
+        img.id="tester" 
+        img.src='images/bulldog.jpg' 
+        img.alt="DOG IMAGES GO HERE"
+
+        const name = document.createElement("P")
+        name.textContent = dog.name
+        name.class="card-text matchName"
+
+        const viewMatchBtn = document.createElement("BUTTON")
+        viewMatchBtn.type="button"
+        viewMatchBtn.setAttribute("class", "btn btn-primary")
+        viewMatchBtn.setAttribute("data-bs-toggle", "modal")
+        viewMatchBtn.setAttribute("data-bs-target", "#matchModal")
+
+        viewMatchBtn.addEventListener("click", (event)=>{
+            event.preventDefault()
+            console.log('click')
+            document.querySelector("#dogModalInfo").textContent = dog.like
+        })
+
+
+        ul.appendChild(newLi)
+        ul.appendChild(img)
+        ul.appendChild(name)
+        ul.appendChild(viewMatchBtn)
+    })
+    
 }
 
 const addLike = async (event)=>{
@@ -89,7 +124,7 @@ const addLike = async (event)=>{
 }
 
 
-getMatches()
+getMatches();
 
 searchBtn.addEventListener('click', searchUser)
 likeBtn.addEventListener('click', addLike)
@@ -97,18 +132,6 @@ likeBtn.addEventListener('click', addLike)
 
 
 
-// const searchUser = async (event)=> {
-//     event.preventDefault()
-//     const userEmail = document.getElementById('userEmail').value.trim()
 
-//     const userFound = await fetch(`/api/users/search/${userEmail}`, {
-//         method: 'GET',
-//         headers: { 'Content-Type': 'application/json' },
-//       });
 
-//     if(userFound){
-//         console.log(userFound)
-//         console.log(JSON.stringify(userFound))
-//     }
-//     else{console.log("no user found")}
-// }
+
