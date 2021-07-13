@@ -6,7 +6,7 @@ class User extends Model {}
 User.init(
    {
        email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
           allowNull: false,
           unique: true,
           primaryKey: true,
@@ -29,7 +29,7 @@ User.init(
        },
 
        liked_dogs: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(3000),
             allowNull: true,
             defaultValue: '[]'
        },
@@ -42,6 +42,7 @@ User.init(
           key: 'email',
           unique: false
         },
+
          validate: {
           isEmail: true,
         },

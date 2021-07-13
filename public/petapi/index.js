@@ -76,6 +76,7 @@ function renderCards(data1) {
   console.log(dogName)
   console.log(data1.animals.length)
 
+  animalCard.setAttribute("dogID", `${dogID}`)
   animalCard.src = photo
   pup.innerHTML = dogName
   Matches();
@@ -86,9 +87,11 @@ document.getElementById('btnYes').addEventListener("click", getData)
 document.getElementById('btnNo').addEventListener("click", getData)
 
 
+
 function Matches(){
   //cardBodyEl.innerHTML = dogName
   cardBodyEl.src = photo
   console.log(cardBodyEl)
 
 }
+
