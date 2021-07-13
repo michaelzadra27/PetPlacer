@@ -2,6 +2,10 @@ console.log("Dashboard")
 
 const searchBtn = document.getElementById('searchBtn')
 const likeBtn = document.getElementById('btnYes')
+let dogID = document.querySelector('dogID')
+let dogName = document.querySelector('#pup').value
+let dogPhoto = document.querySelector('.dogPhoto').getAttribute('src')
+console.log(dogPhoto)
 
 const searchUser = async (event)=> {
 
@@ -71,14 +75,14 @@ const getMatches = async (event)=>{
 
 const addLike = async (event)=>{
     event.preventDefault()
+    console.log("saving data")
     const add = await fetch('/api/users/addLike', {
         method: 'PUT',
-        body: JSON.stringify({like: 30}),
+        body: JSON.stringify({like: dogID, name: dogName, img: dogPhoto}),
         headers: { 'Content-Type': 'application/json' }
     })
     const added = await add
     if(added){
-        console.log('hit')
         getMatches()
     }
     else{return}

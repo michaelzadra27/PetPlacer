@@ -77,9 +77,13 @@ function renderCards(data1) {
   console.log(dogName)
   console.log(data1.animals.length)
 
+  animalCard.setAttribute("dogID", `${dogID}`)
   animalCard.src = photo
   pup.innerHTML = dogName
 
 
 }
+
+document.getElementById('btnYes').addEventListener("click", getData)
+document.getElementById('btnNo').addEventListener("click", getData)
 

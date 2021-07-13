@@ -20,3 +20,4 @@ const createAccountHandler = async (event) => {
     }
 
     submitBtn.addEventListener("click", createAccountHandler);
+}

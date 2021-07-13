@@ -5,19 +5,24 @@ const { User } = require('../../models')
 const Match = require('../../utils/findMatches.js')
 
 router.post('/signup', async (req, res) => {
+  console.log(typeof req.body.newEmail)
   try {
-    const newUser = await User.create({
+    const newUser = await User.build({
       email: req.body.newEmail,
       user_name: req.body.newUserName,
       password: req.body.newPassword
     })
+    console.log(newUser)
+    await newUser.save()
 
     req.session.switch = !req.session.switch
     res.status(200).json(newUser)
   } catch (err) {
+    console.log("in catch")
     res.status(500).json(err)
   }
 })
+
 router.post('/login', async (req, res) => {
   console.log("in try")
   console.log(req.body.email)
@@ -51,21 +56,7 @@ router.post('/login', async (req, res) => {
     console.log("in catch")
   }
 
-  //replace with encryption later
-  if (!req.body.password === userData.password) {
-    res.status(400).json({ message: "incorrect email or password" })
-  }
 
-  req.session.save(() => {
-    req.session.user_id = userData.id;
-    req.session.logged_in = true;
-
-    res.json({ user: userData, message: 'Log in successful' })
-  });
-
-  // } catch (err) {
-  //   res.status(500).json(err)
-  // }
 })
 router.post('/logout', (req, res) => {
   if (req.session) {
@@ -101,16 +92,9 @@ router.get('/search/:email', async (req, res) => {
   } catch (err) {
     res.status(500).json(err)
   }
-  const data = JSON.stringify(userData.dataValues)
-  console.log(userData)
-  return res.json(userData.dataValues)
-  // } catch (err) {
-  //   res.status(500).json(err)
-  // }
 })
 
 router.put('/link_account', async (req, res) => {
-
   try {
     const userData = await User.findByPk(req.session.user_email)
     if (!userData) {
@@ -128,16 +112,6 @@ router.put('/link_account', async (req, res) => {
     const updatedData = await userData.update({ linked_account: req.body.email })
     res.status(200).json(updatedData)
 
-    // if (!secondUserData) {
-    //   res.status(404).message({ message: 'Link failed, email not found' })
-    //   return
-    // }
-
-    // console.log(secondUserData)
-
-    // const updatedData = await userData.update({ linked_account: req.body.linked_account })
-    // res.status(200).json(updatedData)
-
   } catch (err) {
     res.status(500).json(err)
   }
@@ -152,30 +126,25 @@ router.get('/matches', async(req, res)=>{
         const likes_link = await User.findByPk(req.session.user_email, {
             attributes: [ 'liked_dogs', 'linked_account' ]
         })
-        //console.log(likes_link.dataValues.liked_dogs)
+        
         const userLikes = likes_link.dataValues.liked_dogs
         const linkedAccount = likes_link.dataValues.linked_account
+
 
         const linkedUserData = await User.findByPk(linkedAccount, {
             attributes: [ 'liked_dogs' ]
         })
-        console.log("hit2")
+
+
+        const likeData = linkedUserData.dataValues.liked_dogs
+        const parsedData1 = JSON.parse(userLikes)
+        const parsedData2 = JSON.parse(likeData)
+
         
-        const likeData = linkedUserData.liked_dogs
-        console.log("---------------------------------------")
-        
-        console.log(typeof userLikes)
-        console.log(userLikes)
-        const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-        //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-        
+
+        const matches = await Match.compareArray(JSON.stringify(userLikes), JSON.stringify(likeData))  
+        console.log(matches)
         res.status(200).json(matches)
-
-
-    //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-    //res.status(200).json(matches)
-
-
 
   } catch (err) {
     res.status(500).json(err)
@@ -185,15 +154,19 @@ router.get('/matches', async(req, res)=>{
 
 //replace body with session for live
 router.put('/addLike', async (req, res) => {
-  console.log(req.session.user_email)
   try {
     const currentData = await User.findByPk(req.session.user_email, {
       attributes: ['email', 'liked_dogs']
     })
 
-    const parsedData = JSON.parse(currentData.dataValues.liked_dogs)
-    const newLikes = [...parsedData, JSON.parse(req.body.like)]
-
+    let parsedData = JSON.parse(currentData.dataValues.liked_dogs)
+    // if(parsedData.length === 4){
+    //     console.log("length")
+    //     let oldEntry = parsedData.shift()
+    // }
+  
+    const newLikes = [...parsedData, (req.body)]
+  
     const likeAdded = await currentData.update({ liked_dogs: JSON.stringify(newLikes) })
     if (likeAdded) {
       res.status(200).json(newLikes)
