@@ -1,3 +1,6 @@
+var animalCard = document.getElementById('animal')
+var pup = document.getElementById('pup')
+
 const key = "3m8nwrVMxrsMJ4n6XvooyVdxjqVRqKMLiiIrR036M3ynyptSbR"
 const secret = "vT3chXJ3ddzDrpStykKDftVGJ55X1nCGDXPOJJNN"
 //console.log("before token")
@@ -64,9 +67,18 @@ getData();
 
 function renderCards(data1) {
 
-
-  dogID = data1.animals[0].id
+  var i = Math.floor(Math.random() * data1.animals.length)
+  console.log(i)
+  dogID = data1.animals[i].id
   console.log(dogID)
+  photo = data1.animals[i].photos[0].large
+  console.log(photo)
+  dogName = data1.animals[i].name
+  console.log(dogName)
+  console.log(data1.animals.length)
+
+  animalCard.src = photo
+  pup.innerHTML = dogName
 
 
 }
