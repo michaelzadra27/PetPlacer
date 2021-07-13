@@ -1,8 +1,7 @@
 console.log("Dashboard")
 
-
-
 const searchBtn = document.getElementById('searchBtn')
+const likeBtn = document.getElementById('btnYes')
 
 const searchUser = async (event)=> {
 
@@ -55,16 +54,41 @@ const makeList = (user)=>{
 
 
 
+
     foundList.appendChild(li)
     li.appendChild(p)
     p.textContent = user.email
     li.appendChild(Btn)
 }
 
+const getMatches = async (event)=>{
+    //event.preventDefault()
+    const matches = await fetch('/api/users/matches')
+    const array = await matches.json()
+    console.log(array)
+    console.log('match')
+}
+
+const addLike = async (event)=>{
+    event.preventDefault()
+    const add = await fetch('/api/users/addLike', {
+        method: 'PUT',
+        body: JSON.stringify({like: 30}),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    const added = await add
+    if(added){
+        console.log('hit')
+        getMatches()
+    }
+    else{return}
+}
 
 
+getMatches()
 
 searchBtn.addEventListener('click', searchUser)
+likeBtn.addEventListener('click', addLike)
 
 
 
