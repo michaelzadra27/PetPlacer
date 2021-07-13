@@ -172,8 +172,8 @@ router.get('/matches', async(req, res)=>{
         res.status(200).json(matches)
 
 
-    const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-    res.status(200).json(matches)
+    //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+    //res.status(200).json(matches)
 
 
 
