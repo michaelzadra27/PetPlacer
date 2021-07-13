@@ -85,7 +85,7 @@ const addLike = async (event)=>{
 }
 
 
-getMatches()
+getMatches();
 
 searchBtn.addEventListener('click', searchUser)
 likeBtn.addEventListener('click', addLike)
@@ -108,3 +108,5 @@ likeBtn.addEventListener('click', addLike)
 //     }
 //     else{console.log("no user found")}
 // }
+
+
