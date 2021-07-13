@@ -145,42 +145,31 @@ router.put('/link_account', async (req, res) => {
 })
 
 //user email for testing. change to session object for live
-
 router.get('/matches', async(req, res)=>{
-    console.log(req.session.user_email)
-    try{
-        const likes_link = await User.findByPk(req.session.user_email, {
-            attributes: [ 'liked_dogs', 'linked_account' ]
-        })
-        //console.log(likes_link.dataValues.liked_dogs)
-        const userLikes = likes_link.dataValues.liked_dogs
-        const linkedAccount = likes_link.dataValues.linked_account
-
-        const linkedUserData = await User.findByPk(linkedAccount, {
-            attributes: [ 'liked_dogs' ]
-        })
-        console.log("hit2")
-        
-        const likeData = linkedUserData.liked_dogs
-        console.log("---------------------------------------")
-        
-        console.log(typeof userLikes)
-        console.log(userLikes)
-        const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-        //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-        
-        res.status(200).json(matches)
-
-
-    //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
-    //res.status(200).json(matches)
-
-
-
-  } catch (err) {
-    res.status(500).json(err)
-  }
-
+  console.log(req.session.user_email)
+  try{
+      const likes_link = await User.findByPk(req.session.user_email, {
+          attributes: [ 'liked_dogs', 'linked_account' ]
+      })
+      //console.log(likes_link.dataValues.liked_dogs)
+      const userLikes = likes_link.dataValues.liked_dogs
+      const linkedAccount = likes_link.dataValues.linked_account
+      const linkedUserData = await User.findByPk(linkedAccount, {
+          attributes: [ 'liked_dogs' ]
+      })
+      console.log("hit2")
+      const likeData = linkedUserData.liked_dogs
+      console.log("---------------------------------------")
+      console.log(typeof userLikes)
+      console.log(userLikes)
+      const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+      //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+      res.status(200).json(matches)
+  //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+  //res.status(200).json(matches)
+} catch (err) {
+  res.status(500).json(err)
+}
 })
 
 //replace body with session for live
@@ -190,10 +179,8 @@ router.put('/addLike', async (req, res) => {
     const currentData = await User.findByPk(req.session.user_email, {
       attributes: ['email', 'liked_dogs']
     })
-
     const parsedData = JSON.parse(currentData.dataValues.liked_dogs)
     const newLikes = [...parsedData, JSON.parse(req.body.like)]
-
     const likeAdded = await currentData.update({ liked_dogs: JSON.stringify(newLikes) })
     if (likeAdded) {
       res.status(200).json(newLikes)
@@ -202,7 +189,6 @@ router.put('/addLike', async (req, res) => {
     res.status(500).json(err)
   }
 })
-
 module.exports = router;
 
 
