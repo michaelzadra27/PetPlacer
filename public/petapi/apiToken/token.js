@@ -1,4 +1,4 @@
-console.log("Brandon smells")
+const petF
 function getToken() {
     // const params = new URLSearchParams();
     params.append("grant_type", "client_credentials");
@@ -15,3 +15,4 @@ function getToken() {
     res.send(data);
 
 };
+// getToken()
