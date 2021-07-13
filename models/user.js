@@ -31,6 +31,7 @@ User.init(
        liked_dogs: {
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: '[]'
        },
        
        linked_account: {
