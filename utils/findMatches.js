@@ -1,6 +1,7 @@
 const Matches = {
 
     compareArray: (arr1, arr2, allMatches = []) =>{
+        console.log("hit")
         //merges the all the matches found by findMatches into one array
         arr1.forEach(i =>{
             allMatches =[...allMatches, ...Matches.findMatches(i, arr2)]

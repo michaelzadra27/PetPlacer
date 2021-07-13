@@ -4,13 +4,11 @@ header {
   height: 6em;
   padding: 1em 10%;
 }
-
 .tiptop{
   display: inline-flex;
   left: 10%;
   line-height: 50px;
 }
-
 header h2,
 header nav {
   display: inline-block;
@@ -20,36 +18,30 @@ img {
   max-height: 400px;
   margin-right: 13px;
 }
-
 header::after {
   content: '';
   display: inline-block;
   width: 100%;
 }
-
 body {
   width: 100%;
   background: rgb(131,58,180);
   background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
-
 #linkAcctBtn {
   align-content: center;
   margin-right: 1em;
 }
-
 h5 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .btn-group {
   display: flex;
 }
-
 #link {
-  background-color: #0d6efd;
+  background-color: #0D6EFD;
   height: 1.6em;
   width: 3em;
   border-radius: 4px;
@@ -57,16 +49,13 @@ h5 {
   margin-left: 7px;
   color: white;
 }
-
 .modal-body{
   display: flex;
   align-items: center;
 }
-
 ul {
   list-style-type: none;
 }
-
 #btnNo {
   border-radius: 25px;
   margin-right: 20px;
@@ -74,11 +63,9 @@ ul {
   transform: rotate(180deg);
   box-shadow: -5px -10px 10px rgb(0, 0, 0);
 }
-
 #btnYes {
   border-radius: 25px;
   margin-left: 20px;
   font-size: 50px;
   box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
-
