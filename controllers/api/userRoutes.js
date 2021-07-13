@@ -145,25 +145,32 @@ router.put('/link_account', async (req, res) => {
 })
 
 //user email for testing. change to session object for live
-router.get('/matches', async (req, res) => {
-  try {
-    const likes_link = await User.findByPk(req.session.user_email, {
-      attributes: ['liked_dogs', 'linked_account']
-    })
 
-    const userLikes = likes_link.liked_dogs
-    const linkedAccount = likes_link.linked_account
+router.get('/matches', async(req, res)=>{
+    console.log(req.session.user_email)
+    try{
+        const likes_link = await User.findByPk(req.session.user_email, {
+            attributes: [ 'liked_dogs', 'linked_account' ]
+        })
+        //console.log(likes_link.dataValues.liked_dogs)
+        const userLikes = likes_link.dataValues.liked_dogs
+        const linkedAccount = likes_link.dataValues.linked_account
 
-    //array of id's
-    //console.log(userLikes)
+        const linkedUserData = await User.findByPk(linkedAccount, {
+            attributes: [ 'liked_dogs' ]
+        })
+        console.log("hit2")
+        
+        const likeData = linkedUserData.liked_dogs
+        console.log("---------------------------------------")
+        
+        console.log(typeof userLikes)
+        console.log(userLikes)
+        const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+        //const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
+        
+        res.status(200).json(matches)
 
-    //email of linked account
-    //console.log(linkedAccount)
-
-    const linkedUserData = await User.findByPk(linkedAccount, {
-      attributes: ['liked_dogs']
-    })
-    const likeData = linkedUserData.liked_dogs
 
     const matches = Match.compareArray(JSON.parse(userLikes), JSON.parse(likeData))
     res.status(200).json(matches)
