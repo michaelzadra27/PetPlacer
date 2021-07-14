@@ -102,3 +102,21 @@ li {
   font-size: 50px;
   box-shadow: 5px 10px 10px rgb(0, 0, 0);
 }
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+}
+
+#dogInfoModal {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 20px;
+}

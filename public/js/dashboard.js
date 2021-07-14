@@ -80,7 +80,6 @@ const getMatches = async (event) => {
         img.src = dog.img
         img.setAttribute("class", "card-img-top matchImg")
         img.id = "tester"
-        img.src = 'images/bulldog.jpg'
         img.alt = "DOG IMAGES GO HERE"
 
         const name = document.createElement("P")
@@ -89,16 +88,17 @@ const getMatches = async (event) => {
 
         const viewMatchBtn = document.createElement("BUTTON")
         viewMatchBtn.type = "button"
-        viewMatchBtn.setAttribute("class", "btn btn-primary")
+        viewMatchBtn.setAttribute("class", "btn btn-primary pupMatch")
         viewMatchBtn.setAttribute("data-bs-toggle", "modal")
         viewMatchBtn.setAttribute("data-bs-target", "#matchModal")
+        viewMatchBtn.textContent = "Match"
         //viewMatchBtn.setAttribute("dogNum", dog.like)
 
         viewMatchBtn.addEventListener("click", (event) => {
             viewMatchBtn.setAttribute("dogNum", dog.like)
             event.preventDefault()
             console.log('click')
-            document.querySelector("#dogModalInfo").textContent = dog.like
+            // document.querySelector("#dogModalInfo").textContent = dog.like
 
             dogAPI = dog.like
             getData2(dogAPI);
@@ -193,6 +193,7 @@ const getMatches = async (event) => {
 }
 
 const addLike = async (event) => {
+    let dogPhoto = document.querySelector('.dogPhoto').getAttribute('src')
     event.preventDefault()
     console.log("saving data")
     const add = await fetch('/api/users/addLike', {
