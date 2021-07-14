@@ -216,7 +216,9 @@ const getMatches = async (event) => {
 const addLike = async (event) => {
     console.log("this is where you are trenton")
     let dogPhoto = document.querySelector('.dogPhoto').getAttribute('src')
-    console.log(dogPhoto)
+    if(!dogPhoto){
+        return
+    }
     event.preventDefault()
     console.log("saving data")
     const add = await fetch('/api/users/addLike', {
