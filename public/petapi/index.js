@@ -84,5 +84,3 @@ function renderCards(data1) {
 //Calling API when like or dislike is clicked
 document.getElementById('btnYes').addEventListener("click", getData)
 document.getElementById('btnNo').addEventListener("click", getData)
-
-
