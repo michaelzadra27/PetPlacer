@@ -89,9 +89,10 @@ const getMatches = async (event) => {
 
         const viewMatchBtn = document.createElement("BUTTON")
         viewMatchBtn.type = "button"
-        viewMatchBtn.setAttribute("class", "btn btn-primary")
+        viewMatchBtn.setAttribute("class", "btn btn-primary pupMatch")
         viewMatchBtn.setAttribute("data-bs-toggle", "modal")
         viewMatchBtn.setAttribute("data-bs-target", "#matchModal")
+        viewMatchBtn.textContent = "Match"
         //viewMatchBtn.setAttribute("dogNum", dog.like)
 
         viewMatchBtn.addEventListener("click", (event) => {

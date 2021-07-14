@@ -5,14 +5,18 @@ header {
   padding: 1em 10%;
 }
 
+.mainName {
+  display: flex;
+  justify-content: center;
+  font-size: 48px;
+}
+
 .siteName {
   font-weight: bold;
   font-size: 48px;
   font-family: 'Roboto', san-serif;
   vertical-align: middle;
 }
-
-
 
 header h2,
 header nav {
@@ -34,7 +38,7 @@ header::after {
 body {
   width: 100%;
   background: rgb(131,58,180);
-  background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgb(0, 0, 0) 100%);
 }
 
 #linkAcctBtn {
@@ -85,8 +89,6 @@ li {
   max-width: 6rem;
 }
 
-
-
 #btnNo {
   border-radius: 25px;
   margin-right: 20px;
@@ -99,4 +101,22 @@ li {
   margin-left: 20px;
   font-size: 50px;
   box-shadow: 5px 10px 10px rgb(0, 0, 0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+}
+
+#dogInfoModal {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 20px;
 }
