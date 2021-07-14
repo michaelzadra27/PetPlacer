@@ -5,6 +5,7 @@ const likeBtn = document.getElementById('btnYes')
 let dogID = document.querySelector('dogID')
 let dogName = document.querySelector('#pup').value
 let dogPhoto = document.querySelector('.dogPhoto').getAttribute('src')
+
 console.log(dogPhoto)
 
 const searchUser = async (event) => {
@@ -71,7 +72,7 @@ const getMatches = async (event) => {
     const array = await matches.json()
     array.forEach(dog => {
         let ul = document.querySelector(".matchList")
-        console.log(dog)
+        console.log("dog.img")
         console.log(dog.img)
         const newLi = document.createElement("LI")
 
@@ -80,7 +81,6 @@ const getMatches = async (event) => {
         img.src = dog.img
         img.setAttribute("class", "card-img-top matchImg")
         img.id = "tester"
-        img.src = 'images/bulldog.jpg'
         img.alt = "DOG IMAGES GO HERE"
 
         const name = document.createElement("P")
@@ -98,10 +98,30 @@ const getMatches = async (event) => {
             viewMatchBtn.setAttribute("dogNum", dog.like)
             event.preventDefault()
             console.log('click')
-            document.querySelector("#dogModalInfo").textContent = dog.like
-
             dogAPI = dog.like
             getData2(dogAPI);
+            
+            const closeModalBtn = document.createElement('BUTTON')
+            closeModalBtn.setAttribute('type', 'button')
+            closeModalBtn.setAttribute('class', 'btn btn-primary')
+            closeModalBtn.setAttribute('data-bs-toggle', 'modal')
+            closeModalBtn.setAttribute('data-bs-target', '#matchModal')
+            closeModalBtn.setAttribute('data-dismiss', 'modal')
+            closeModalBtn.setAttribute('id', 'closeBtn')
+            closeModalBtn.textContent = 'Close'
+
+            document.querySelector('.matchFooter').appendChild(closeModalBtn)
+
+            closeModalBtn.addEventListener('click', ()=>{
+                document.getElementById("dogNameModal").textContent = ""
+                document.getElementById("dogInfoModal").textContent = ""
+                document.getElementById("dogPicModal").src = ""
+                document.getElementById('closeBtn').remove()
+            })
+
+
+            // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal"
+            // data-dismiss="modal">Close</button>
         })
 
 
@@ -193,6 +213,9 @@ const getMatches = async (event) => {
 }
 
 const addLike = async (event) => {
+    console.log("this is where you are trenton")
+    let dogPhoto = document.querySelector('.dogPhoto').getAttribute('src')
+    console.log(dogPhoto)
     event.preventDefault()
     console.log("saving data")
     const add = await fetch('/api/users/addLike', {

@@ -79,17 +79,8 @@ function renderCards(data1) {
   animalCard.setAttribute("dogID", `${dogID}`)
   animalCard.src = photo
   pup.innerHTML = dogName
-  Matches();
 }
 
 //Calling API when like or dislike is clicked
 document.getElementById('btnYes').addEventListener("click", getData)
 document.getElementById('btnNo').addEventListener("click", getData)
-
-
-function Matches(){
-  //cardBodyEl.innerHTML = dogName
-  cardBodyEl.src = photo
-  console.log(cardBodyEl)
-
-}
