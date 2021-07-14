@@ -120,7 +120,6 @@ router.put('/link_account', async (req, res) => {
 
 //user email for testing. change to session object for live
 router.get('/matches', async(req, res)=>{
-
     console.log(req.session.user_email)
     try{
         const likes_link = await User.findByPk(req.session.user_email, {
@@ -150,7 +149,6 @@ router.get('/matches', async(req, res)=>{
     res.status(500).json(err)
   }
 
-
 })
 
 //replace body with session for live
@@ -160,7 +158,6 @@ router.put('/addLike', async (req, res) => {
       attributes: ['email', 'liked_dogs']
     })
 
-
     let parsedData = JSON.parse(currentData.dataValues.liked_dogs)
     // if(parsedData.length === 4){
     //     console.log("length")
@@ -169,7 +166,6 @@ router.put('/addLike', async (req, res) => {
   
     const newLikes = [...parsedData, (req.body)]
   
-
     const likeAdded = await currentData.update({ liked_dogs: JSON.stringify(newLikes) })
     if (likeAdded) {
       res.status(200).json(newLikes)

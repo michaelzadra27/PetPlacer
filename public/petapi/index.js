@@ -87,11 +87,9 @@ document.getElementById('btnYes').addEventListener("click", getData)
 document.getElementById('btnNo').addEventListener("click", getData)
 
 
-
 function Matches(){
   //cardBodyEl.innerHTML = dogName
   cardBodyEl.src = photo
   console.log(cardBodyEl)
 
 }
-

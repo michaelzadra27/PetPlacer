@@ -80,6 +80,13 @@ li {
   object-fit: contain;
 }
 
+.matchImg{
+  max-height: 6rem;;
+  max-width: 6rem;
+}
+
+
+
 #btnNo {
   border-radius: 25px;
   margin-right: 20px;
