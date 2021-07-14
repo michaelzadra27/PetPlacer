@@ -125,7 +125,7 @@ router.get('/matches', async(req, res)=>{
         const likes_link = await User.findByPk(req.session.user_email, {
             attributes: [ 'liked_dogs', 'linked_account' ]
         })
-        
+        // console.log(likes_link)
         const userLikes = likes_link.dataValues.liked_dogs
         const linkedAccount = likes_link.dataValues.linked_account
 
@@ -134,13 +134,13 @@ router.get('/matches', async(req, res)=>{
             attributes: [ 'liked_dogs' ]
         })
 
-
+        console.log(linkedUserData.dataValues)
         const likeData = linkedUserData.dataValues.liked_dogs
         const parsedData1 = JSON.parse(userLikes)
         const parsedData2 = JSON.parse(likeData)
 
         
-
+        console.log(likeData)
         const matches = await Match.compareArray(JSON.stringify(userLikes), JSON.stringify(likeData))  
         console.log(matches)
         res.status(200).json(matches)

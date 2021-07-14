@@ -70,6 +70,9 @@ const getMatches = async (event) => {
     //event.preventDefault()
     const matches = await fetch('/api/users/matches')
     const array = await matches.json()
+    while(document.querySelector('.matchList').firstChild){
+        document.querySelector('.matchList').lastChild.remove()
+    }
     array.forEach(dog => {
         let ul = document.querySelector(".matchList")
         console.log("dog.img")
