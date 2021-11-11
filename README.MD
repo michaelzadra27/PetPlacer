@@ -18,6 +18,9 @@ NPM Install
 ### Usage
     
 This project is not done, we are planning on releasing a full blown application to the app store next year!
+
+### Link to deployed Application
+https://desolate-badlands-34327.herokuapp.com/
     
 ### License
     
